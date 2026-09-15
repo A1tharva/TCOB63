@@ -1,140 +1,137 @@
-# 👕 AI-Powered Digital Apparel Intelligence & Virtual Fitting Platform
+# AI-Powered Digital Apparel Intelligence & Virtual Fitting Platform
 
-> A multimodal AI platform for personalized digital apparel evaluation, combining
-> real-time human body analysis, fabric intelligence, garment understanding, and
-> personalized fit prediction.
+An AI-powered multimodal apparel intelligence platform designed to make online clothing shopping more personalized and interactive.
 
-## 🚀 Overview
+## Overview
 
-Online clothing shopping provides limited information about how a garment will
-look, fit, and feel before purchase.
+Traditional e-commerce clothing shopping provides limited information about how a garment may fit or feel before purchase. This project explores a multimodal computer vision and deep learning system that combines:
 
-This project aims to bridge the gap between physical apparel shopping and
-digital e-commerce by developing an AI-powered system that analyzes:
+- Real-time human pose estimation
+- Human body segmentation
+- Body measurement estimation
+- Fabric/material analysis
+- Garment representation
+- Multimodal AI
+- Personalized clothing size prediction
+- Fit prediction
+- Dynamic movement-based fit analysis
+- Digital fabric/tactile property estimation
+- Virtual fitting
 
-- 👤 Human body geometry from real-time video
-- 🧵 Fabric characteristics from images
-- 👕 Garment properties and dimensions
-- 📏 Personalized clothing size
-- 🎯 Static and movement-aware fit
-- ✋ Predicted fabric/tactile properties
-- 🛍️ Interactive digital apparel evaluation
+The system is designed to combine information about the user's body, the selected garment, and the garment's material characteristics to generate a personalized apparel representation.
 
-The long-term vision is to create a more physical, tangible, and personalized
-online clothing-shopping experience without requiring the customer to
-physically visit a store.
-
----
-
-## 🎯 Project Objectives
-
-The project aims to develop a multimodal apparel intelligence system capable of:
-
-1. Detecting and tracking human body keypoints from real-time video.
-2. Segmenting the user from the surrounding environment.
-3. Constructing a stable body representation from temporal video data.
-4. Estimating apparel-relevant body measurements.
-5. Identifying fabric/material characteristics from images.
-6. Extracting visual and structural fabric representations.
-7. Estimating selected fabric properties such as:
-   - Softness
-   - Stretch
-   - Thickness
-   - Stiffness
-   - Drape
-   - Surface characteristics
-8. Understanding garment-specific properties.
-9. Combining body, garment, and fabric information.
-10. Predicting personalized clothing size and fit.
-11. Exploring movement-aware/dynamic fit prediction.
-12. Providing an interactive virtual apparel evaluation experience.
-
----
-
-## 🧠 System Architecture
+## Proposed Architecture
 
 ```text
-                         USER
-                          │
-                          ▼
-                  ┌───────────────┐
-                  │ Camera / Video│
-                  └───────┬───────┘
-                          │
-                          ▼
-              ┌──────────────────────┐
-              │   BODY INTELLIGENCE  │
-              │                      │
-              │ MoveNet              │
-              │ BodyPix              │
-              │ Temporal Processing  │
-              └──────────┬───────────┘
-                         │
-                   Body Signature
-                         │
-                         │
-       ┌─────────────────┴─────────────────┐
-       │                                   │
-       ▼                                   ▼
-┌─────────────────┐               ┌─────────────────┐
-│ FABRIC AI       │               │ GARMENT AI      │
-│                 │               │                 │
-│ CNN + CBAM      │               │ Garment         │
-│ Fabric Analysis │               │ Classification  │
-│ Property        │               │ & Attributes    │
-│ Prediction      │               │                 │
-└────────┬────────┘               └────────┬────────┘
-         │                                 │
-         └──────────────┬──────────────────┘
-                        │
-                        ▼
-              ┌─────────────────────┐
-              │ MULTIMODAL FUSION   │
-              │                     │
-              │ Body × Garment ×    │
-              │ Fabric              │
-              └──────────┬──────────┘
-                         │
-                         ▼
-             ┌────────────────────────┐
-             │ PERSONALIZED APPAREL   │
-             │ REPRESENTATION         │
-             └───────────┬────────────┘
-                         │
-             ┌───────────┼────────────┐
-             ▼           ▼            ▼
-          SIZE         FIT           FEEL
-       Prediction   Prediction    Estimation
-             │           │            │
-             └───────────┼────────────┘
-                         ▼
-                ┌─────────────────┐
-                │ E-COMMERCE UI   │
-                │                 │
-                │ Virtual Apparel │
-                │ Experience      │
-                └─────────────────┘
+Camera / Video
+       |
+       v
+Body Perception
+       |
+       +---- MoveNet
+       |
+       +---- BodyPix
+       |
+       v
+Body Signature
+       |
+       |
+       +-----------------------------+
+       |                             |
+       v                             v
+Garment Intelligence           Fabric Intelligence
+       |                             |
+       v                             v
+Garment Signature             Fabric Signature
+       |                             |
+       +-------------+---------------+
+                     |
+                     v
+             Multimodal Fusion
+                     |
+                     v
+          Personalized Apparel
+              Representation
+                     |
+          +----------+----------+
+          |          |          |
+          v          v          v
+        Size        Fit        Feel
+       Prediction  Prediction  Prediction
+                     |
+                     v
+             Digital Shopping UI
 ```
 
----
+## Technology Stack
 
-## 🛠️ Tech Stack
-
-This project includes a modern Next.js frontend for the digital fitting studio experience.
-
+### Frontend
 - Next.js
 - React
 - TypeScript
 - Tailwind CSS
-- shadcn/ui
+- Lucide React
 
----
+### Computer Vision
+- MoveNet
+- BodyPix
+- OpenCV
 
-## 🚀 Getting Started
+### Machine Learning
+- Python
+- PyTorch
+- CNN
+- CBAM
+- Multimodal learning
+
+### Backend
+- FastAPI
+- REST APIs
+
+## Main Modules
+
+### 1. Body Intelligence
+Processes real-time video to detect human body keypoints and body silhouette, followed by body measurement and temporal analysis.
+
+### 2. Fabric & Garment Intelligence
+Analyzes garment and fabric images to identify material characteristics and generate structured fabric and garment representations.
+
+### 3. Multimodal Fusion
+Combines body, garment, and fabric representations to estimate personalized size, fit, and material compatibility.
+
+### 4. Digital Shopping Experience
+Integrates the AI modules into an interactive web application for personalized apparel evaluation and virtual fitting.
+
+## Getting Started
+
+To run the virtual atelier digital shopping experience locally:
 
 ```bash
-npm install
-npm run dev
+# Install dependencies
+pnpm install
+
+# Start the development server
+pnpm dev
 ```
 
-Open http://localhost:3000 to view the app.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the studio application.
+
+## Project Status
+
+🚧 Currently under development.
+
+The project is being developed as a final-year engineering project and research prototype.
+
+## Team
+
+Team Size: 4
+
+## Future Scope
+
+- Improved body measurement accuracy
+- Dynamic movement-based fitting
+- Advanced virtual try-on
+- Personalized fabric preference modeling
+- E-commerce integration
+- Large-scale apparel datasets
+- Real-time inference optimization
